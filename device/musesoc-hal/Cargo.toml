@@ -1,0 +1,78 @@
+[package]
+name = "musesoc-hal"
+version = "0.0.1"
+authors = ["Antoine van Gelder <antoine@flowdsp.io>"]
+license-file = "LICENSE.txt"
+description = "Hardware Abstraction Layer implementation for the MUSE SoC"
+categories = ["embedded", "hardware-support", "no-std"]
+keywords = ["muse", "riscv", "hal", "embedded-hal"]
+repository = "https://github.com/flowdsp/muse"
+edition = "2021"
+rust-version = "1.68"
+include = ["examples/**/*", "src/**/*", "README.md", "memory.x"]
+
+[package.metadata.docs.rs]
+default-target = "riscv32i-unknown-none-elf"
+targets = [
+    "riscv32i-unknown-none-elf",
+]
+
+[lib]
+test = false
+bench = false
+
+# - features ------------------------------------------------------------------
+
+[features]
+default = []
+
+
+# - dependencies --------------------------------------------------------------
+
+[dependencies]
+musesoc-pac = { path = "../musesoc-pac", default-features = false }
+
+atomic-polyfill = "=1.0.1"
+embedded-hal = "=1.0.0-alpha.9"
+embedded-hal-0 = { package = "embedded-hal", version = "=0.2.7", features = ["unproven"] }
+embedded-hal-nb = "=1.0.0-alpha.1"
+heapless = { version = "=0.7.16" } # TODO 0.8.0 is en-route...
+log = "=0.4.17"
+nb = "=1.0.0"
+riscv = { version = "=0.10.1", default-features = false }
+
+
+# - dev-dependencies ----------------------------------------------------------
+
+[dev-dependencies]
+musesoc-pac = { path = "../musesoc-pac", features = ["critical-section", "rt"]}
+panic-halt = "=0.2.0"
+riscv = { version = "=0.10.1", features = ["critical-section-single-hart"] }
+riscv-rt = { version = "=0.11.0" }
+
+
+# - examples ------------------------------------------------------------------
+
+[[example]]
+name = "blinky"
+required-features = ["musesoc-pac/rt"]
+
+[[example]]
+name = "blinky_pac"
+required-features = ["musesoc-pac/rt"]
+
+[[example]]
+name = "interrupts"
+required-features = ["musesoc-pac/rt"]
+
+[[example]]
+name = "interrupts_pac"
+required-features = ["musesoc-pac/rt"]
+
+[[example]]
+name = "uart"
+required-features = ["musesoc-pac/rt"]
+
+[[example]]
+name = "uart_pac"
+required-features = ["musesoc-pac/rt"]

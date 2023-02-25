@@ -1,0 +1,51 @@
+[package]
+name = "musesoc-firmware"
+version = "0.1.0"
+authors = ["Antoine van Gelder <antoine@flowdsp.io>"]
+license-file = "LICENSE.txt"
+description = "MUSE Firmware"
+edition = "2021"
+default-run = "firmware"
+
+[package.metadata.docs.rs]
+default-target = "riscv32i-unknown-none-elf"
+targets = [
+    "riscv32i-unknown-none-elf",
+]
+
+
+# - features ------------------------------------------------------------------
+
+[features]
+default = [
+    "musesoc-pac/rt"
+]
+
+
+# - dependencies --------------------------------------------------------------
+
+[dependencies]
+musesoc-pac = { path = "../musesoc-pac", features = ["critical-section", "rt"]}
+musesoc-hal = { path = "../musesoc-hal", features = []}
+
+atomic-polyfill = "=1.0.1"
+critical-section = "=1.1.1"
+heapless = { version = "=0.7.16" } # TODO 0.8.0 is en-route
+log = "=0.4.17"
+riscv = { version = "=0.10.1", features = ["critical-section-single-hart"] }
+riscv-rt = { version = "=0.11.0" }
+
+
+# - binaries ------------------------------------------------------------------
+
+[[bin]]
+name = "firmware"
+required-features = ["musesoc-pac/rt"]
+
+[[bin]]
+name = "blinky"
+required-features = ["musesoc-pac/rt"]
+
+[[bin]]
+name = "gpio"
+required-features = ["musesoc-pac/rt"]

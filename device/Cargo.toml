@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "musesoc-firmware",
+    "musesoc-hal",
+    "musesoc-pac",
+]
+
+exclude = [
+]

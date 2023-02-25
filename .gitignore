@@ -1,0 +1,13 @@
+# python
+.python-version
+
+# rust
+**/target/
+Cargo.lock
+
+# build artifacts
+build/
+
+# noise
+datasheets/
+toolchain
