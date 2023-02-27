@@ -28,11 +28,6 @@ Be excellent to each other.
     # pip install "git+https://github.com/lambdaconcept/lambdasoc"
     pip install "git+https://github.com/mndza/lambdasoc"
 
-    # TODO just for lxterm - find a replacement
-    mkdir toolchain
-    wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
-    python ./litex_setup.py --init --install --config=minimal
-
     # enable yosys
     source toolchain/oss-cad-suite/environment
 

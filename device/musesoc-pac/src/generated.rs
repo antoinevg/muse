@@ -108,6 +108,62 @@ impl core::fmt::Debug for LEDS {
 }
 #[doc = "LEDS"]
 pub mod leds;
+#[doc = "PMOD0"]
+pub struct PMOD0 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PMOD0 {}
+impl PMOD0 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const pmod0::RegisterBlock = 0x8000_0060 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const pmod0::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for PMOD0 {
+    type Target = pmod0::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PMOD0 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PMOD0").finish()
+    }
+}
+#[doc = "PMOD0"]
+pub mod pmod0;
+#[doc = "PMOD1"]
+pub struct PMOD1 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PMOD1 {}
+impl PMOD1 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const pmod1::RegisterBlock = 0x8000_0080 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const pmod1::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for PMOD1 {
+    type Target = pmod1::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PMOD1 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PMOD1").finish()
+    }
+}
+#[doc = "PMOD1"]
+pub mod pmod1;
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals."]
@@ -119,6 +175,10 @@ pub struct Peripherals {
     pub UART: UART,
     #[doc = "LEDS"]
     pub LEDS: LEDS,
+    #[doc = "PMOD0"]
+    pub PMOD0: PMOD0,
+    #[doc = "PMOD1"]
+    pub PMOD1: PMOD1,
 }
 impl Peripherals {
     #[doc = r" Returns all the peripherals *once*."]
@@ -148,6 +208,12 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             LEDS: LEDS {
+                _marker: PhantomData,
+            },
+            PMOD0: PMOD0 {
+                _marker: PhantomData,
+            },
+            PMOD1: PMOD1 {
                 _marker: PhantomData,
             },
         }

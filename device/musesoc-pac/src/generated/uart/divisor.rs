@@ -35,18 +35,18 @@ impl From<crate::W<DIVISOR_SPEC>> for W {
     }
 }
 #[doc = "Field `divisor` reader - uart divisor register field"]
-pub type DIVISOR_R = crate::FieldReader<u16, u16>;
+pub type DIVISOR_R = crate::FieldReader<u8, u8>;
 #[doc = "Field `divisor` writer - uart divisor register field"]
-pub type DIVISOR_W<'a, const O: u8> = crate::FieldWriter<'a, u32, DIVISOR_SPEC, u16, u16, 9, O>;
+pub type DIVISOR_W<'a, const O: u8> = crate::FieldWriter<'a, u32, DIVISOR_SPEC, u8, u8, 8, O>;
 impl R {
-    #[doc = "Bits 0:8 - uart divisor register field"]
+    #[doc = "Bits 0:7 - uart divisor register field"]
     #[inline(always)]
     pub fn divisor(&self) -> DIVISOR_R {
-        DIVISOR_R::new((self.bits & 0x01ff) as u16)
+        DIVISOR_R::new((self.bits & 0xff) as u8)
     }
 }
 impl W {
-    #[doc = "Bits 0:8 - uart divisor register field"]
+    #[doc = "Bits 0:7 - uart divisor register field"]
     #[inline(always)]
     #[must_use]
     pub fn divisor(&mut self) -> DIVISOR_W<0> {

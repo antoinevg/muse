@@ -141,7 +141,7 @@
             <field>
               <name>divisor</name>
               <description>uart divisor register field</description>
-              <bitRange>[8:0]</bitRange>
+              <bitRange>[7:0]</bitRange>
             </field>
           </fields>
         </register>
@@ -288,6 +288,90 @@
             <field>
               <name>output</name>
               <description>leds output register field</description>
+              <bitRange>[7:0]</bitRange>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>PMOD0</name>
+      <groupName>PMOD0</groupName>
+      <baseAddress>0x80000060</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x20</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>mode</name>
+          <description>pmod0 mode register</description>
+          <addressOffset>0x0000</addressOffset>
+          <size>32</size>
+          <resetValue>0x00</resetValue>
+          <access>read-write</access>
+          <fields>
+            <field>
+              <name>mode</name>
+              <description>pmod0 mode register field</description>
+              <bitRange>[13:0]</bitRange>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>csr_r</name>
+          <description>pmod0 csr_r register</description>
+          <addressOffset>0x0008</addressOffset>
+          <size>32</size>
+          <resetValue>0x00</resetValue>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>csr_r</name>
+              <description>pmod0 csr_r register field</description>
+              <bitRange>[13:0]</bitRange>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>csr_w</name>
+          <description>pmod0 csr_w register</description>
+          <addressOffset>0x0010</addressOffset>
+          <size>32</size>
+          <resetValue>0x00</resetValue>
+          <access>write-only</access>
+          <fields>
+            <field>
+              <name>csr_w</name>
+              <description>pmod0 csr_w register field</description>
+              <bitRange>[13:0]</bitRange>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>PMOD1</name>
+      <groupName>PMOD1</groupName>
+      <baseAddress>0x80000080</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x08</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>csr</name>
+          <description>pmod1 csr register</description>
+          <addressOffset>0x0000</addressOffset>
+          <size>32</size>
+          <resetValue>0x00</resetValue>
+          <access>read-write</access>
+          <fields>
+            <field>
+              <name>csr</name>
+              <description>pmod1 csr register field</description>
               <bitRange>[7:0]</bitRange>
             </field>
           </fields>
